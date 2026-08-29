@@ -1,0 +1,3 @@
+This file signals that the repository has not yet been initialized from the template.
+The setup workflow (.github/workflows/setup.yml) will rename package_name throughout
+the project based on the repository name, then delete this file and itself.

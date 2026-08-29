@@ -1,0 +1,38 @@
+name: Lint PR Title
+
+on: # yamllint disable-line rule:truthy
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
+
+permissions:
+  pull-requests: read
+
+jobs:
+  main:
+    name: Validate PR title
+    runs-on: ubuntu-latest
+    steps:
+      - uses: amannn/action-semantic-pull-request@48f256284bd46cdaab1048c3721360e808335d50 # v6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # Conventional Commit types allowed in PR titles
+          types: |
+            feat
+            fix
+            docs
+            refactor
+            chore
+          # Scopes are not required (simplified Conventional Commits)
+          requireScope: false
+          # Ensure the subject doesn't start with an uppercase letter
+          subjectPattern: ^(?![A-Z]).+$
+          subjectPatternError: |
+            The subject "{subject}" found in the pull request title "{title}"
+            should not start with an uppercase character.
+
+            Please use lowercase for the first letter of the description.
+            Example: "feat: add support for hexahedral meshes"

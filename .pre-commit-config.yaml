@@ -1,0 +1,46 @@
+# Pre-commit hooks configuration
+# Run `pre-commit install` to set up the git hooks
+# Run `pre-commit run --all-files` to run all hooks manually
+repos:
+  # Standard pre-commit hooks for basic file hygiene
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace  # Remove trailing whitespace from lines
+      - id: end-of-file-fixer  # Ensure files end with a single newline
+      - id: check-merge-conflict  # Detect unresolved merge conflict markers
+
+  # Local hooks using tools installed in the environment
+  - repo: local
+    hooks:
+      # Ruff: Fast Python linter (replaces flake8, isort, etc.)
+      # Checks for code issues and auto-fixes where possible
+      - id: ruff
+        name: ruff
+        entry: ruff check --fix --show-fixes
+        language: system
+        types_or: [python, pyi]
+
+      # Ruff formatter: Fast Python code formatter (replaces black)
+      - id: ruff-format
+        name: ruff-format
+        entry: ruff format
+        language: system
+        types_or: [python, pyi]
+
+      # YAML linter: Validates YAML syntax and style
+      # Uses strict mode with config from .yamllint
+      - id: yamllint
+        name: yamllint
+        entry: yamllint --strict -c=.yamllint
+        language: system
+        types: [yaml]
+
+      # Mypy: Static type checker for Python
+      # Runs via makefile target to ensure consistent configuration
+      - id: mypy
+        name: mypy
+        entry: make typecheck
+        language: system
+        types: [python]
+        pass_filenames: false
