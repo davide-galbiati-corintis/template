@@ -12,7 +12,7 @@ Based on the conventions and tooling used in the glaciercore repository.
 2. **Fill in the TODOs**:
    - `pyproject.toml` -- project description.
    - `CLAUDE.md` / `AGENTS.md` -- virtual environment path, project overview, architecture.
-   - `src/package_name/__init__.py` -- package docstring.
+   - `src/template/__init__.py` -- package docstring.
 
 3. **Start prompting**: begin writing code with your AI agents. The `CLAUDE.md` and `AGENTS.md`
    files instruct agents to write clean, well-structured code with type hints, docstrings, and accompanying unit and functional tests. They will also automatically delete
@@ -61,7 +61,7 @@ pip install -e .
 
 ```
 ├── src/
-│   └── package_name/        # Your package source code (src-layout)
+│   └── template/        # Your package source code (src-layout)
 │       ├── __init__.py
 │       └── ...
 ├── tests/

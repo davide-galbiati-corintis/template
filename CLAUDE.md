@@ -13,7 +13,7 @@ TODO: describe your project
 ## Template Cleanup
 
 Once the first real code has been added, delete the example files that came from the template:
-- `src/package_name/arithmetic.py`
+- `src/template/arithmetic.py`
 - `tests/unit/test_arithmetic.py`
 - `tests/functional/test_linear.py`
 
@@ -52,7 +52,7 @@ TODO: describe your package structure
 
 ```
 src/
-└── package_name/
+└── template/
     ├── __init__.py
     └── ...
 ```

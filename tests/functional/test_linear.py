@@ -2,7 +2,7 @@
 
 import pytest
 
-from package_name.arithmetic import add, multiply
+from template.arithmetic import add, multiply
 
 
 @pytest.mark.parametrize(
